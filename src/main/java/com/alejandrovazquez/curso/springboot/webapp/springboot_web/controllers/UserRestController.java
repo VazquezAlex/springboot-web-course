@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alejandrovazquez.curso.springboot.webapp.springboot_web.models.User;
+import com.alejandrovazquez.curso.springboot.webapp.springboot_web.models.dto.UserDto;
 
 @RestController
 @RequestMapping("/api")
@@ -23,6 +24,17 @@ public class UserRestController {
     body.put("user", user);
 
     return body;
+  }
+
+  @GetMapping("/user-dto") // dto = Data Transfer Object.
+  public UserDto detailsDto() {
+
+    User user = new User("Alejandro", "Vazquez");
+    UserDto userDto = new UserDto();
+    userDto.setUser(user);
+    userDto.setTitle("Hola Mundo Spring Boot");
+
+    return userDto;
   }
 
 }
