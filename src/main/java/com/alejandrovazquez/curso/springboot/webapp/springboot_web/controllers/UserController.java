@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.alejandrovazquez.curso.springboot.webapp.springboot_web.models.User;
 
@@ -26,16 +27,28 @@ public class UserController {
 
   @GetMapping("/list")
   public String list(ModelMap model) {
+    // List<User> users = Arrays.asList(
+    //   new User("John", "Doe"),
+    //   new User("Alejandro", "Vazquez", "alejandro@email.com"),
+    //   new User("Lalo", "Perez")
+    // );
+    // model.addAttribute("users", users); <-- removed this to add through @ModelAttribute.
+
+    model.addAttribute("title", "Users List");
+
+    return "list";
+  }
+
+  // This is used to inject the users into the view with this Annotation, this applies to all controller methods.
+  @ModelAttribute("users")
+  public List<User> usersModel() {
     List<User> users = Arrays.asList(
       new User("John", "Doe"),
       new User("Alejandro", "Vazquez", "alejandro@email.com"),
       new User("Lalo", "Perez")
     );
 
-    model.addAttribute("title", "Users List");
-    model.addAttribute("users", users);
-
-    return "list";
+    return users;
   }
   
 
