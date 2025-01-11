@@ -40,9 +40,7 @@ public class RequestParamController {
       code = Integer.parseInt(request.getParameter("code"));
     } catch (NumberFormatException e) {}
 
-    ParamMixDto params = new ParamMixDto();
-    params.setCode(code); 
-    params.setMessage(request.getParameter("message"));
+    ParamMixDto params = new ParamMixDto(request.getParameter("message"), code);
 
     return params;
   }

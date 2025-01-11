@@ -5,6 +5,13 @@ public class ParamMixDto {
   private String message;
   private Integer code;
 
+  public ParamMixDto() {}
+
+  public ParamMixDto(String message, Integer code) {
+    this.message = message;
+    this.code = code;
+  }
+
   public String getMessage() {
     return message;
   }
