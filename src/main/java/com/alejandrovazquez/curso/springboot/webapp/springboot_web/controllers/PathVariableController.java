@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alejandrovazquez.curso.springboot.webapp.springboot_web.models.User;
 import com.alejandrovazquez.curso.springboot.webapp.springboot_web.models.dto.ParamDto;
 
 @RestController
@@ -29,6 +32,14 @@ public class PathVariableController {
     json.put("id", id);
 
     return json;
+  }
+
+  @PostMapping("/create")
+  public User create(@RequestBody User user) {
+    // Do something with the user - like save on DB.
+    user.setEmail(user.getEmail().toUpperCase()); // Sample of interacting with the user.
+
+    return user;
   }
 
 }
