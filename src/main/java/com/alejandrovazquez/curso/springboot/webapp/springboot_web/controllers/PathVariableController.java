@@ -31,6 +31,12 @@ public class PathVariableController {
   @Value("${config.code}")
   private Long code;
 
+  @Value("#{'${config.listOfValues}'.split(',')}")
+  private List<String> valueList;
+
+  @Value("#{'${config.listOfValues}'.toUpperCase()}")
+  private String valueString;
+
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
     ParamDto param = new ParamDto();
@@ -62,6 +68,8 @@ public class PathVariableController {
     json.put("username", username);
     json.put("message", message);
     json.put("listOfValues", listOfValues);
+    json.put("valueList", valueList);
+    json.put("valueString", valueString);
     json.put("code", code);
 
     return json;
