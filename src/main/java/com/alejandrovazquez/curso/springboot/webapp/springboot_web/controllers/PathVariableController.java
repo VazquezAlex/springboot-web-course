@@ -1,6 +1,7 @@
 package com.alejandrovazquez.curso.springboot.webapp.springboot_web.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,7 @@ public class PathVariableController {
   // private String message;
   
   @Value("${config.listOfValues}")
-  private String[] listOfValues;
+  private List<String> listOfValues;
   
   @Value("${config.code}")
   private Long code;
